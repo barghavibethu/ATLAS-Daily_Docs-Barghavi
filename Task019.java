@@ -1,15 +1,26 @@
-class OuterClass4 {
-    int x = 10;
-
-    static class InnerClass {
-        static int y = 5;
+import java.io.*;
+class Readchar{
+public static void main(String args[])
+{
+    FileReader fr =null;
+    try
+    {
+        fr = new FileReader("FileName03.txt");
+        int ch;
+        while((ch = fr.read()) != -1)
+        {
+            System.out.print((char)ch);
+        }
+        System.out.println("Reading complete");
+        fr.close();
+    }
+    catch(FileNotFoundException e)
+    {
+        System.out.println("Sorry..!! File Not Found...!!!");
+    }
+    catch(IOException e)
+    {
+        System.out.println(e.getMessage());
     }
 }
-
-public class Task019 {
-    public static void main(String[] args) {
-        OuterClass4.InnerClass myInner = new OuterClass4.InnerClass();
-        System.out.println(myInner.y);
-
-    }
 }

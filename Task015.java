@@ -1,15 +1,17 @@
-class OuterClass {
-    int x = 10;
-    class InnerClass {
-        int y = 5;
-    }
-}
-
+import java.io.*;
 public class Task015 {
-    public static void main(String[] args) {
-        OuterClass myOuter = new OuterClass();
-        OuterClass.InnerClass myInner = myOuter.new InnerClass();
-        System.out.println(myInner.y + myOuter.x);
+    public static void main(String args[]) {
+        File f1 = new File("FileName1.txt");
+        FileOutputStream outfile = null;
+        byte Text[] = {'I',' ', ' ','L', 'O', 'V', 'E',' ','I', 'N', 'D', 'I', 'A'};
+        try {
+            outfile = new FileOutputStream(f1);
+            outfile.write(Text);
+        } catch (IOException e) {
+            System.out.println(e);
+            System.exit(-1);
+        }
+        System.out.println("Write Byte");
+        System.out.println("Thank You...!!!");
     }
 }
-

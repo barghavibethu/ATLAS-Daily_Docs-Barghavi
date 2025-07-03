@@ -1,15 +1,20 @@
-public class Task025 {
-    public static void main(String[] args)
-    {
-        int[] arr = new int[4];
-        arr[0] = 10;
-        arr[1] = 20;
-        arr[2] = 30;
-        arr[3] = 40;
+import java.io. BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
-        System.out.println(
-                "Trying to access element outside the size of array");
-        System.out.println(arr[5]);
+public class Task025 {
+    public static void main(String[] args) {
+        String filePath = "example.txt";
+        String content = "Hello, World!\nThis is a Buffered Writer example.";
+
+        // Initialize BufferedWriter with a FileWriter
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            // Write content to the file
+            writer.write(content);
+            System.out.println("Content written to file.");
+        } catch (IOException e) {
+            System.err.println("An error occurred: " + e.getMessage());
+        }
     }
 }
 

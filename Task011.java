@@ -1,18 +1,38 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
-import java.util.ArrayList;
-
-class Task011 {
-    public static void main(String[] args) {
-        ArrayList<Integer> a = new ArrayList();
-
-        for(int i = 0; i < 10; ++i) {
-            a.add(i);
-            System.out.println(i);
+class SharedResource {
+    private boolean ready = false;
+    synchronized void produce() {
+        try {
+            while (ready) {
+                wait();
+            }
+            System.out.println("Producing...");
+            ready = true;
+            notify();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+    }
+    synchronized void consume() {
+        try {
+            while (!ready) {
+                wait();
+            }
+            System.out.println("Consuming...");
+            ready = false;
+            notify();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+public class Task011 {
+    public static void main(String[] args) {
+        SharedResource resource = new SharedResource();
 
+        Thread producer = new Thread(resource::produce);
+        Thread consumer = new Thread(resource::consume);
+
+        producer.start();
+        consumer.start();
     }
 }

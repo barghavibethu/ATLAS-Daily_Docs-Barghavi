@@ -1,21 +1,39 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
-class Task003 {
-    public static void main(String[] args) {
-        int n = 10;
-        int m = 0;
-
+class MyThread extends Thread {
+    private Thread t;
+    private String threadName;
+    MyThread( String name){
+        threadName = name;
+        System.out.println("Creating " + threadName );
+    }
+    public void run() {
+        System.out.println("Running " + threadName );
         try {
-            int ans = n / m;
-            System.out.println("Answer: " + ans);
-        } catch (ArithmeticException var7) {
-            System.out.println("Error: Division by zero is not allowed!");
-        } finally {
-            System.out.println("Program continues after handling the exception.");
+            for(int i = 4; i > 0; i--) {
+                System.out.println("Thread: " + threadName + ", " + i);
+// Let the thread sleep for a while.
+                Thread.sleep(50);
+            }
+        } catch (InterruptedException e) {
+            System.out.println("Thread " + threadName + " interrupted.");
         }
+        System.out.println("Thread " + threadName + " exiting.");
 
+    }
+    public void start ()
+    {
+        System.out.println("Starting " + threadName );
+        if (t == null)
+        {
+            t = new Thread (this, threadName);
+            t.start ();
+        }
+    }
+}
+public class Task003 {
+    public static void main(String args[]) {
+        MyThread R1 = new MyThread( "Thread-1");
+        R1.start();
+        MyThread R2 = new MyThread( "Thread-2");
+        R2.start();
     }
 }

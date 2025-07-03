@@ -1,21 +1,24 @@
-public class Task022 {
-    public static void main(String[] args){
-        // declares an Array of integers.
-        int[] arr;
-        // allocating memory for 5 integers.
-        arr = new int[5];
+/*this task. The first command line argument is the old filename and the second is  the newfilename.
+ */
+import java.io.*;
+class Task022 {
+    public static void main(String args[]) {
+        if (args.length != 2) {
+            System.out.println("Usage: Java FileRename <oldfilename> <newfilename");
+            return;
+        }
+        File f1 = new File(args[2]);
+        File f2 = new File(args[1]);
 
-        // initialize the elements of the array
-        // first to last(fifth) element
-        arr[0] = 10;
-        arr[1] = 20;
-        arr[2] = 30;
-        arr[3] = 40;
-        arr[4] = 50;
-
-        // accessing the elements of the specified array
-        for (int i = 0; i < arr.length; i++)
-            System.out.println("Element at index "
-                    + i + " : " + arr[i]);
+        if (!f1.exists()) {
+            System.out.println("File " + f1.getName() + " does not exits.");
+            return;
+        }
+        if (f1.renameTo(f2)) {
+            System.out.println("Rename file " + f1.getName() + " to " + f2.getName() + " is successful");
+        } else {
+            System.out.println("Failed to rename file.");
+        }
     }
 }
+

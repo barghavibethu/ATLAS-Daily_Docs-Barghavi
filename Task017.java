@@ -1,15 +1,24 @@
-class OuterClass2 {
-    int x = 10;
-    static class InnerClass {
-        int y = 5;
+import java.io.*;
+import java.util.*;
+public class Task017
+{
+    public static void main(String args[]) {
+        FileOutputStream outfile = null;
+//String s=args[0]; // to input string from command line
+        Scanner sc=new Scanner(System.in);
+        String s = sc.nextLine();
+        byte b1[] = s.getBytes();
+        try
+        {
+            outfile = new FileOutputStream("FileName02.txt");
+            outfile.write(b1);
+        }
+        catch(IOException e)
+        {
+            System.out.println(e);
+            System.exit(-1);
+        }
+        System.out.println("Write Byte");
+        System.out.println("Thank You...!!!");
     }
 }
-
-public class Task017 {
-    public static void main(String[] args) {
-        OuterClass myOuter = new OuterClass();
-        OuterClass.InnerClass myInner = myOuter.new InnerClass();
-        System.out.println(myInner.y + myOuter.x);
-    }
-}
-

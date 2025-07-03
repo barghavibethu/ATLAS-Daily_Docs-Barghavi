@@ -1,16 +1,24 @@
-class OuterClass3{
-    int x = 50;
-    class InnerClass {
-        public int innerMethod() {
-            return x;
-        }
+import java.io.*;
+class CharacterWrite{
+public static void main(String args[])
+{
+    File f1=new File("FileName03.txt");
+    FileWriter fw = null;
+    try
+    {
+        fw=new FileWriter(f1);
+        fw.write("Ahmedabad \n");
+        fw.write("Baroda \n");
+        fw.close();
     }
+    catch(FileNotFoundException e)
+    {
+        System.out.println("Sorry..!! File Not Found...!!!");
+    }
+    catch(IOException e)
+    {
+        System.out.println(e.getMessage());
+    }
+    System.out.println("write operation done!!");
 }
-
-public class Task018 {
-    public static void main(String[] args){
-        OuterClass3 myOuter = new OuterClass3();
-        OuterClass3.InnerClass myInner = myOuter.new InnerClass();
-        System.out.println(myInner.innerMethod());
-    }
 }

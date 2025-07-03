@@ -1,15 +1,22 @@
-class OuterClass1 {
-    int x = 10;
-    private class InnerClass {
-        int y = 5;
+import java.io.*;
+public class Task016
+{
+    public static void main(String args[])
+    {
+        FileInputStream infile = null;
+        int b;
+        try
+        {
+            infile = new FileInputStream("FileName1.txt");
+            while((b = infile.read()) != -1)
+            {
+                System.out.println((char)b);
+            }
+            infile.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println("Sorry..!! File Not Found...!!!");
+        }
     }
 }
-
-public class Task016 {
-    public static void main(String[] args) {
-        OuterClass myOuter = new OuterClass();
-        OuterClass.InnerClass myInner = myOuter.new InnerClass();
-        System.out.println(myInner.y + myOuter.x);
-    }
-}
-

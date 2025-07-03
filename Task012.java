@@ -1,23 +1,26 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+class InterruptibleThread extends Thread {
+    public void run() {
+        try {
+            while (!Thread.currentThread().isInterrupted()) {
+                System.out.println("Thread is running");
+                Thread.sleep(100);
+            }
+        } catch (InterruptedException e) {
+            System.out.println("Thread was interrupted");
+        }
+    }
+}
 
-import java.util.ArrayList;
-
-class Task012 {
+public class Task012 {
     public static void main(String[] args) {
-        ArrayList<String> al = new ArrayList();
-        al.add("Barghavi");
-        al.add("Bethu");
-        System.out.println("Orignal List : " + String.valueOf(al));
-        al.add(1, "Hello");
-        System.out.println("After Adding element at index 1 : " + String.valueOf(al));
-        al.remove(0);
-        System.out.println("Element removed from index 0 : " + String.valueOf(al));
-        al.remove("Barghavi");
-        System.out.println("Element Barghavi removed : " + String.valueOf(al));
-        al.set(0, "B");
-        System.out.println("List after updation of value : " + String.valueOf(al));
+        InterruptibleThread thread = new InterruptibleThread();
+        thread.start();
+
+        try {
+            Thread.sleep(500);
+            thread.interrupt();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

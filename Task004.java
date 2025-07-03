@@ -1,24 +1,44 @@
+class Counter {
+    private int count = 0;
+    public void increment() {
+        count++;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+
+class ThreadDemo extends Thread {
+    Counter counter;
+
+    ThreadDemo(Counter counter) {
+        this.counter = counter;
+    }
+
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            counter.increment();
+        }
+    }
+}
+
 public class Task004 {
-    public static int add(int a, int b) {
-        return a + b;
-    }
-    public static int subtract(int a, int b) {
-        return a - b;
-    }
-    public static int multiply(int a, int b) {
-        return a * b;
-    }
-    public static int divide(int a, int b) {
-        return a / b;
-    }
-    public static void main(String[] args){
-        int x = 5;
-        int y = 7;
-        System.out.println("Main Started");
-        System.out.println("Sum of 2 numbers is: " + add(x, y));
-        System.out.println("Difference of 2 numbers is: " + subtract(x, y));
-        System.out.println("Product of 2 numbers is: "+ multiply(x, y));
-        System.out.println("Division of 2 numbers is: "+ divide(x, y));
-        System.out.println("Main Ended");
+    public static void main(String[] args) {
+        Counter counter = new Counter();
+        ThreadDemo t1 = new ThreadDemo(counter);
+        ThreadDemo t2 = new ThreadDemo(counter);
+
+        t1.start();
+        t2.start();
+
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Final count: " + counter.getCount());
     }
 }
