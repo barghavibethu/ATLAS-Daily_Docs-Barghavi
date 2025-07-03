@@ -1,12 +1,12 @@
+import java.util.*;
+import java.util.stream.Stream;
 public class Task014 {
     public static void main(String[] args){
-        char[] arr = {'a','e','i','o','u'};
-        System.out.println(arr);
-        String[] names = {"Meena","Tina","Veena","Heena"};
-        System.out.println(names[0]);
-        names[1] = "Reena";
-        System.out.println(names[1]);
-        System.out.println(names.length);
-        System.out.println(names[3]);
+        Stream<Integer> numbers = Stream
+                .iterate(1, n -> n+1)
+                .limit(20);
+
+                numbers.limit(10)
+                .forEach(System.out::println);
     }
 }

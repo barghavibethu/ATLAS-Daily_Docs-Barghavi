@@ -1,17 +1,12 @@
-import java.io.*;
+import java.util.stream.Stream;
+
 public class Task015 {
-    public static void main(String args[]) {
-        File f1 = new File("FileName1.txt");
-        FileOutputStream outfile = null;
-        byte Text[] = {'I',' ', ' ','L', 'O', 'V', 'E',' ','I', 'N', 'D', 'I', 'A'};
-        try {
-            outfile = new FileOutputStream(f1);
-            outfile.write(Text);
-        } catch (IOException e) {
-            System.out.println(e);
-            System.exit(-1);
-        }
-        System.out.println("Write Byte");
-        System.out.println("Thank You...!!!");
+    public static void main(String[] args){
+
+        Stream<Integer> nums = Stream.iterate(1, n -> n+1).limit(20);
+
+        Stream<Integer> skipNums = nums.skip(15);
+        skipNums.forEach(System.out::println);
+
     }
 }

@@ -1,44 +1,19 @@
-class Counter {
-    private int count = 0;
-    public void increment() {
-        count++;
-    }
+import java.lang.FunctionalInterface;
+// this is functional interface
+@FunctionalInterface
+interface MyInterface{
 
-    public int getCount() {
-        return count;
-    }
+    // abstract method
+    double getPiValue();
 }
-
-class ThreadDemo extends Thread {
-    Counter counter;
-
-    ThreadDemo(Counter counter) {
-        this.counter = counter;
-    }
-
-    public void run() {
-        for (int i = 0; i < 10; i++) {
-            counter.increment();
-        }
-    }
-}
-
 public class Task004 {
-    public static void main(String[] args) {
-        Counter counter = new Counter();
-        ThreadDemo t1 = new ThreadDemo(counter);
-        ThreadDemo t2 = new ThreadDemo(counter);
 
-        t1.start();
-        t2.start();
-
-        try {
-            t1.join();
-            t2.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("Final count: " + counter.getCount());
+    public static void main( String[] args ) {
+        // declare a reference to MyInterface
+        MyInterface ref;
+        // lambda expression
+        ref = () -> 3.1415;
+        System.out.println("Value of Pi = " + ref.getPiValue());
     }
 }
+

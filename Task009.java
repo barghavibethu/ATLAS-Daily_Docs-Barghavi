@@ -1,20 +1,16 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+import java.util.*;
+import java.util.stream.Collectors;
 
-class Task009 {
-    static void fun() throws IllegalAccessException {
-        System.out.println("Inside fun(). ");
-        throw new IllegalAccessException("demo");
-    }
-
+public class Task009 {
     public static void main(String[] args) {
-        try {
-            fun();
-        } catch (IllegalAccessException var2) {
-            System.out.println("Caught in main.");
-        }
+        //creating array list with 5 integers
+        List<Integer> numbers = Arrays.asList(2, 3, 4, 5, 6);
 
+        //using stream to calculate tge square of each number
+        List<Integer> oddNumbers = numbers.stream().filter(num -> num %2 != 0).collect(Collectors.toList());
+
+        //printing the square numbers
+        System.out.println("Original numbers: " + numbers);
+        System.out.println("Squares of the numbers: " + oddNumbers);
     }
 }

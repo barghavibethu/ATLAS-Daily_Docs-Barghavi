@@ -1,44 +1,34 @@
-class Counter2 {
-    private int count = 0;
-    public void increment() {
-        synchronized (this) {
-            count++;
-        }
-    }
-    public int getCount() {
-        return count;
-    }
-}
-
-class ThreadDemo2 extends Thread {
-    Counter counter;
-    ThreadDemo2(Counter counter) {
-        this.counter = counter;
-    }
-
-    public void run() {
-        for (int i = 0; i < 10; i++) {
-            counter.increment();
-        }
-    }
-}
+import java.util.ArrayList;
+import java.util.List;
 
 public class Task006 {
+
+    // create an object of list using ArrayList
+    static List<String> places = new ArrayList<>();
+
+    // preparing our data
+    public static List getPlaces() {
+
+        // add places and country to the list
+        places.add("Nepal, Kathmandu");
+        places.add("Nepal, Pokhara");
+        places.add("India, Delhi");
+        places.add("USA, New York");
+        places.add("Africa, Nigeria");
+
+        return places;
+    }
+
     public static void main(String[] args) {
-        Counter counter = new Counter();
-        ThreadDemo2 t1 = new ThreadDemo2(counter);
-        ThreadDemo2 t2 = new ThreadDemo2(counter);
 
-        t1.start();
-        t2.start();
+        List<String> myPlaces = getPlaces();
+        System.out.println("Places from Nepal:");
 
-        try {
-            t1.join();
-            t2.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("Final count: " + counter.getCount());
+        // Filter places from Nepal
+        myPlaces.stream()
+                .filter((p) -> p.startsWith("India"))
+                .map((p) -> p.toUpperCase())
+                .sorted()
+                .forEach((p) -> System.out.println(p));
     }
 }

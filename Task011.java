@@ -1,38 +1,19 @@
-class SharedResource {
-    private boolean ready = false;
-    synchronized void produce() {
-        try {
-            while (ready) {
-                wait();
-            }
-            System.out.println("Producing...");
-            ready = true;
-            notify();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-    synchronized void consume() {
-        try {
-            while (!ready) {
-                wait();
-            }
-            System.out.println("Consuming...");
-            ready = false;
-            notify();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-}
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class Task011 {
     public static void main(String[] args) {
-        SharedResource resource = new SharedResource();
+        //creating array list with 5 integers
+        List<Integer> numbers = Arrays.asList(2, 3, 4, 4, 2, 4);
 
-        Thread producer = new Thread(resource::produce);
-        Thread consumer = new Thread(resource::consume);
+        //using stream to calculate tge square of each number
+        List<Integer> removeDuplicate =  numbers.stream()
+                .distinct()
+                .collect(Collectors.toList());
 
-        producer.start();
-        consumer.start();
+        //printing the square numbers
+        System.out.println("Original numbers: " + numbers);
+        System.out.println("Duplicate numbers: " + removeDuplicate);
     }
 }
+
