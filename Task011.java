@@ -1,24 +1,18 @@
-import java.util.Scanner;
-public class Task011 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String loginid = "Barghavi";
-        String password = "12345";
-        int count = 0;
-        System.out.print("Enter your login ID: ");
-        loginid = sc.nextLine();
-        System.out.print("Enter your password: ");
-        password = sc.nextLine();
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
 
-        while (!(loginid.equals("Barghavi") && password.equals("12345"))) {
-            count++;
-            System.out.println("Incorrect login credentials," + count + " times");
-            System.out.print("Enter your login ID: ");
-            loginid = sc.nextLine();
-            System.out.print("Enter your password: ");
-            password = sc.nextLine();
+import java.util.ArrayList;
+
+class Task011 {
+    public static void main(String[] args) {
+        ArrayList<Integer> a = new ArrayList();
+
+        for(int i = 0; i < 10; ++i) {
+            a.add(i);
+            System.out.println(i);
         }
-            System.out.print("Login Successful! ");
-        sc.close();
-        }
+
     }
+}

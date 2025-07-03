@@ -1,18 +1,15 @@
-class Person {
-   private String name;
-   //Getter
-    public String getName(){
-        return name;
-    }
-    //Setter
-    public void setName(String newName){
-        this.name = newName;
+class OuterClass2 {
+    int x = 10;
+    static class InnerClass {
+        int y = 5;
     }
 }
-public class Task017{
-    public static void main(String[] args){
-        Person myObj =  new Person();
-        myObj.setName("John");
-        System.out.println(myObj.getName());
+
+public class Task017 {
+    public static void main(String[] args) {
+        OuterClass myOuter = new OuterClass();
+        OuterClass.InnerClass myInner = myOuter.new InnerClass();
+        System.out.println(myInner.y + myOuter.x);
     }
 }
+

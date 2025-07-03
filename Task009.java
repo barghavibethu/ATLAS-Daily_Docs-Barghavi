@@ -1,12 +1,20 @@
-public class Task009 {
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+class Task009 {
+    static void fun() throws IllegalAccessException {
+        System.out.println("Inside fun(). ");
+        throw new IllegalAccessException("demo");
+    }
+
     public static void main(String[] args) {
-        int num1 = 5, num2 = 3, num3 = 7;
-        if (num1 > num2 && num1 > num3) {
-            System.out.println("num1 is greater");
-        } else if (num2 > num3) {
-            System.out.println("num2 is greater");
-        } else {
-            System.out.println("num3 is greater");
+        try {
+            fun();
+        } catch (IllegalAccessException var2) {
+            System.out.println("Caught in main.");
         }
+
     }
 }

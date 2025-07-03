@@ -1,15 +1,23 @@
-import java.util.Scanner;
-public class Task006 {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter your login ID: ");
-        String id = sc.nextLine();
-        System.out.print("Enter your password: ");
-        String pwd = sc.nextLine();
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
 
-        System.out.println("Hi, ");
-        System.out.println("Your login id is "+id);
-        System.out.println("And your pwd is "+pwd);
-        sc.close();
+public class Task006 {
+    public static void main(String[] args) {
+        try {
+            int[] a = new int[2];
+            int b = 0;
+            int c = 1 / b;
+            System.out.println("Access element three :" + a[3]);
+        } catch (ArithmeticException e) {
+            System.out.println("ArithmeticException thrown  :" + String.valueOf(e));
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ArrayIndexOutOfBoundsException thrown  :" + String.valueOf(e));
+        } catch (Exception e) {
+            System.out.println("Exception thrown  :" + String.valueOf(e));
+        }
+
+        System.out.println("Out of the block");
     }
 }

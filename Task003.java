@@ -1,11 +1,21 @@
-public class Task003 {
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+class Task003 {
     public static void main(String[] args) {
-        int a = 2;
-        int b = 5;
-        int temp = a;
-        a = b;
-        b = temp;
-        System.out.println("Value of a is: "+a);
-        System.out.println("Value of b is: "+b);
+        int n = 10;
+        int m = 0;
+
+        try {
+            int ans = n / m;
+            System.out.println("Answer: " + ans);
+        } catch (ArithmeticException var7) {
+            System.out.println("Error: Division by zero is not allowed!");
+        } finally {
+            System.out.println("Program continues after handling the exception.");
+        }
+
     }
 }

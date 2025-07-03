@@ -1,14 +1,15 @@
- package Enumerations;
-    enum color{
-        red, blue, green, yellow
+class OuterClass1 {
+    int x = 10;
+    private class InnerClass {
+        int y = 5;
     }
-    public class Task016{
-        public static void main(String[] args){
-            color c1 = color.yellow;
-            System.out.println(c1);
+}
 
-            color c2 = color.blue;
-            System.out.println(c2);
-        }
+public class Task016 {
+    public static void main(String[] args) {
+        OuterClass myOuter = new OuterClass();
+        OuterClass.InnerClass myInner = myOuter.new InnerClass();
+        System.out.println(myInner.y + myOuter.x);
     }
+}
 

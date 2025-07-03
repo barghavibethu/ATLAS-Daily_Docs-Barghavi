@@ -1,15 +1,19 @@
-class Customers {
-    void accept() {
-        System.out.println("accept customer called");
-    }
-    void display() {
-        System.out.println("display customer called");
-    }
-}
-public class Task007{
-    public static void main(String[] args){
-        Customers cobj = new Customers();
-        cobj.accept();
-        cobj.display();
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+public class Task007 {
+    public static void main(String[] args) {
+        try {
+            int[] a = new int[2];
+            int b = 0;
+            int c = 1 / b;
+            System.out.println("Access element three :" + a[3]);
+        } catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("Exception thrown  :" + String.valueOf(e));
+        }
+
+        System.out.println("Out of the block");
     }
 }
