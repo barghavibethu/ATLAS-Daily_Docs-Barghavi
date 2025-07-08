@@ -1,16 +1,22 @@
+import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
+class Task013{
+    public static void main(String args[]) {
+        HashMap<Integer, String> hmobj1 = new HashMap<>();
+        HashMap<Integer, String> hmobj2 = new HashMap<Integer, String>();
 
-public class Task013{
-    public static void main(String[] args){
-    List<String> names = Arrays.asList("Abc", "Jkl", "Def", "Mno", "Ghi");
-        List<String> sortedNames= names.stream()
-                .sorted()
-                .collect(Collectors.toList());
+        hmobj1.put(10, "Anitha");
+        hmobj1.put(20, "Saritha");
+        hmobj1.put(30, "Ankitha");
+        hmobj2.put(44, "John");
+        hmobj2.put(55, "Steve");
+        hmobj2.put(66, "Jack");
 
-        System.out.println("Original names: " + names);
-        System.out.println("Sorted names: " + sortedNames);
-
+        System.out.println("Mapping HashMap hmobj1: " + hmobj1);
+        System.out.println("Mapping HashMap hmobj2: " + hmobj2);
     }
 }
 
+
+//set -- arrayList , replace the values , updates the previous value
+//put -- hash table , insert the value, puts a new value

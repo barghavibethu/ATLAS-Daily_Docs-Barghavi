@@ -1,18 +1,20 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-public class Task017 {
-    public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+import java.io.*;
+import java.util.*;
+class Task017{
+    public static void main(String args[]) {
+        HashMap<String, String> hmobj1 = new HashMap<>();
+        HashMap<String, String> hmobj2 = new HashMap<String, String>();
 
-        Optional<Integer> sum = numbers.stream().reduce((x, y) -> x + y);
-        System.out.println("Sum of all elements: " + sum.orElse(0));
+        hmobj1.put("10", "Anitha");
+        hmobj1.put("20", "Saritha");
+        hmobj1.put("30", "Ankitha");
+        hmobj2.put("44", "John");
+        hmobj2.put("55", "Steve");
+        hmobj2.put("66", "Jack");
 
-        Optional<Integer> max = numbers.stream().reduce(Integer::max);
-        System.out.println("Maximum element: " + max.orElse(0));
-
-        List<String> strings = Arrays.asList("Hello", " ", "world", "!");
-        Optional<String> concatenatedString = strings.stream().reduce((x, y) -> x + y);
-        System.out.println("Concatenated string: " + concatenatedString.orElse(""));
+        System.out.println("Mapping HashMap hmobj1: " + hmobj1);
+        System.out.println("Mapping HashMap hmobj2: " + hmobj2);
     }
 }
+//set -- arrayList , replace the values , updates the previous value
+//put -- hash table , insert the value, puts a new value

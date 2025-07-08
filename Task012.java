@@ -1,26 +1,17 @@
-class InterruptibleThread extends Thread {
-    public void run() {
-        try {
-            while (!Thread.currentThread().isInterrupted()) {
-                System.out.println("Thread is running");
-                Thread.sleep(100);
-            }
-        } catch (InterruptedException e) {
-            System.out.println("Thread was interrupted");
-        }
-    }
-}
+import java.util.Hashtable;
+import java.util.Map;
 
-public class Task012 {
+public class Task012{
     public static void main(String[] args) {
-        InterruptibleThread thread = new InterruptibleThread();
-        thread.start();
+        Hashtable<String, Integer> ht = new Hashtable<>();
+        ht.put("Anitha", 101);
+        ht.put("Kavitha", 102);
+        ht.put("Meera", 103);
 
-        try {
-            Thread.sleep(500);
-            thread.interrupt();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        for (Map.Entry<String, Integer> e : ht.entrySet())
+            System.out.println(e.getKey() + " " + e.getValue());
     }
 }
+// Map is an interface
+// hash table -->   slower , sync , thread safe, no null value accepted
+// hash map --> faster while retrieving, asynchro , only one null key and multiple null values.
