@@ -1,18 +1,29 @@
-import java.util.Stack;
-public class Task007 {
-    public static void main(String[] args) {
-        // Create a stack of Strings
-        Stack<String> names = new Stack<>();
-        // Push elements
-        names.push("Bala");
-        names.push("Barghavi");
-        names.push("Raghava");
-        names.push("Sri");
+class TreeNode7 {
+    int item;
+    TreeNode7 left, right;
 
-        System.out.println("Stack of names: " + names);
-        // Search for an element
-        String topElement = names.peek();
-        // Display the result
-        System.out.println("Top element is: " + topElement);
+    TreeNode7(int item) {
+        item = item;
+        left = right = null;
+    }
+}
+class BinarySearchTreeOp02 {
+    TreeNode7 root;
+
+    public BinarySearchTreeOp02() {
+        this.root = null;
+    }
+    public TreeNode7 search(int key) {
+        TreeNode7 current = root;
+        while (current != null) {		//	key 30    current 50 == root
+            if (key == current.item) {
+                return current;
+            } else if (key < current.item) {		//	key 80    current 50 == root
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+        return null;
     }
 }

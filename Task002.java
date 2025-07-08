@@ -1,82 +1,48 @@
-class Node<T> {
-    T data;
-    Node<T> next;
+// Node class for the tree
+class TreeNode {
+    int value;
+    TreeNode left, right;
 
-    public Node(T data) {
-        this.data = data;
-        this.next = null;
+    TreeNode(int val) {
+        value = val;
+        left = right = null;
     }
 }
-class CustomLinkedList<T> {
-    private Node<T> head;
-    private int size = 0;
 
-    public void add(T data) {
-        Node<T> newNode = new Node<>(data);
-        if (head == null) {
-            head = newNode;
+// Binary Search Tree class
+class BinarySearchTree {
+    TreeNode root;
+
+    // Constructor initializes an empty tree
+    BinarySearchTree() {
+        root = null;
+    }
+
+    // 1. Insert when the tree is empty
+    void insertFirst(int value) {
+        if (root == null) {
+            root = new TreeNode(value);
+            System.out.println("Inserted " + value + " as root node.");
         } else {
-            Node<T> current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
-        }
-        size++;
-    }
-
-    public void addFirst(T data) {
-        Node<T> newNode = new Node<>(data);
-        newNode.next = head;
-        head = newNode;
-        size++;
-    }
-
-    public T removeFirst() {
-        if (head == null) {
-            throw new
-                    java.util.NoSuchElementException("List is empty");
-        }
-        T removedData = head.data;
-        head = head.next;
-        size--;
-        return removedData;
-    }
-
-    public T get(int index) {
-        checkBounds(index);
-        Node<T> current = head;
-        for (int i = 0; i < index; i++) {
-            current = current.next;
-        }
-        return current.data;
-    }
-
-    public int size() {
-        return size;
-    }
-
-    private void checkBounds(int index) {
-        if (index < 0 || index >= size) {
-            throw new
-                    IndexOutOfBoundsException("Index out of bounds");
+            System.out.println("Tree is not empty. Use insertNext() for further inserts.");
         }
     }
-}
 
-class Task002 {
-    public static void main(String[] args) {
-        CustomLinkedList<String> liobj = new CustomLinkedList<>();
-        liobj.add("Anitha");
-        liobj.add("Verma");
-        liobj.addFirst("Jack");
+    // 2. Insert when the tree has one or more nodes
+    void insertNext(int value) {
+        root = insertRecursively(root, value);
+    }
 
-        System.out.println("First Element: " + liobj.get(0));
-        System.out.println("Size: " + liobj.size());
-
-        liobj .removeFirst();
-
-        System.out.println("First Element after removal: " + liobj.get(0));
-        System.out.println("Size after removal: " + liobj.size());
+    // Helper recursive method for insertNext
+    private TreeNode insertRecursively(TreeNode node, int value) {
+        if (node == null) {
+            return new TreeNode(value);
+        }
+        if (value < node.value) {
+            node.left = insertRecursively(node.left, value);
+        } else if (value > node.value) {
+            node.right = insertRecursively(node.right, value);
+        }
+        return node;
     }
 }

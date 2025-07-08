@@ -1,38 +1,63 @@
-class Node {
-        int data;
-        Node next;
+// Node class for the tree
+class TreeNode2 {
+    int value;
+    TreeNode left, right;
 
-        //constructor
-        Node(int data) {
-            this.data = data;
-            this.next = null;
+    TreeNode2(int val) {
+        value = val;
+        left = right = null;
+    }
+}
+
+// Binary Search Tree class
+class BinarySearchTree1 {
+    TreeNode root;
+
+    // Constructor initializes an empty tree
+    BinarySearchTree1() {
+        root = null;
+    }
+
+    // 1. Insert when the tree is empty
+    void insertFirst(int value) {
+        if (root == null) {
+            root = new TreeNode(value);
+            System.out.println("Inserted " + value + " as root node.");
+        } else {
+            System.out.println("Tree is not empty. Use insertNext() for further inserts.");
         }
     }
-    public class Task003{
-        public static void main(String[] args){
-            Node head = null;
-            Node tail = null;
 
-            //Adding elements
-            int[] values = {10, 20, 30, 40, 50};
-            for (int val : values) {
-                Node newNode = new Node(val);
-                if(head == null){
-                head = newNode;
-                tail = newNode;
-                newNode.next = head;
-            } else {
-                tail.next = newNode;
-                tail = newNode;
-                tail.next = head;
-            }
+    // 2. Insert when the tree has one or more nodes
+    void insertNext(int value) {
+        root = insertRecursively(root, value);
+    }
+
+    // Helper recursive method for insertNext
+    private TreeNode insertRecursively(TreeNode node, int value) {
+        if (node == null) {
+            return new TreeNode(value);
         }
-        if(head != null){
-            Node current = head;
-            do {
-                System.out.print(current.data+" ");
-                current = current.next;
-            } while (current != head);
+        if (value < node.value) {
+            node.left = insertRecursively(node.left, value);
+        } else if (value > node.value) {
+            node.right = insertRecursively(node.right, value);
+        }
+        return node;
+    }
+
+    // Inorder traversal to display the tree
+    void inorderTraversal() {
+        System.out.print("Inorder Traversal: ");
+        inorderHelper(root);
+        System.out.println();
+    }
+
+    private void inorderHelper(TreeNode node) {
+        if (node != null) {
+            inorderHelper(node.left);
+            System.out.print(node.value + " ");
+            inorderHelper(node.right);
         }
     }
 }
