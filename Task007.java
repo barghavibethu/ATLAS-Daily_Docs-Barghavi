@@ -1,27 +1,18 @@
-import java.util.LinkedList;
-
+import java.util.Stack;
 public class Task007 {
-    public static void main(String[] args){
-        LinkedList<String> list = new LinkedList<>();
+    public static void main(String[] args) {
+        // Create a stack of Strings
+        Stack<String> names = new Stack<>();
+        // Push elements
+        names.push("Bala");
+        names.push("Barghavi");
+        names.push("Raghava");
+        names.push("Sri");
 
-        //Add 5 elements
-        list.add("Apple");
-        list.add("Banana");
-        list.add("Cherry");
-        list.add("Date");
-        list.add("Orange");
-
-        //Print original list
-        System.out.println("Original list: "+ list);
-
-        //Replace 3rd element(index 2)
-        for (int i = 0; i < 5; i++) {
-            System.out.println(list.get(i));
-        }
-        System.out.println();
-
-        for(String str: list){
-            System.out.print(str+ " ");
-        }
+        System.out.println("Stack of names: " + names);
+        // Search for an element
+        String topElement = names.peek();
+        // Display the result
+        System.out.println("Top element is: " + topElement);
     }
 }

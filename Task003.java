@@ -1,39 +1,38 @@
-class MyThread extends Thread {
-    private Thread t;
-    private String threadName;
-    MyThread( String name){
-        threadName = name;
-        System.out.println("Creating " + threadName );
-    }
-    public void run() {
-        System.out.println("Running " + threadName );
-        try {
-            for(int i = 4; i > 0; i--) {
-                System.out.println("Thread: " + threadName + ", " + i);
-// Let the thread sleep for a while.
-                Thread.sleep(50);
-            }
-        } catch (InterruptedException e) {
-            System.out.println("Thread " + threadName + " interrupted.");
-        }
-        System.out.println("Thread " + threadName + " exiting.");
+class Node {
+        int data;
+        Node next;
 
-    }
-    public void start ()
-    {
-        System.out.println("Starting " + threadName );
-        if (t == null)
-        {
-            t = new Thread (this, threadName);
-            t.start ();
+        //constructor
+        Node(int data) {
+            this.data = data;
+            this.next = null;
         }
     }
-}
-public class Task003 {
-    public static void main(String args[]) {
-        MyThread R1 = new MyThread( "Thread-1");
-        R1.start();
-        MyThread R2 = new MyThread( "Thread-2");
-        R2.start();
+    public class Task003{
+        public static void main(String[] args){
+            Node head = null;
+            Node tail = null;
+
+            //Adding elements
+            int[] values = {10, 20, 30, 40, 50};
+            for (int val : values) {
+                Node newNode = new Node(val);
+                if(head == null){
+                head = newNode;
+                tail = newNode;
+                newNode.next = head;
+            } else {
+                tail.next = newNode;
+                tail = newNode;
+                tail.next = head;
+            }
+        }
+        if(head != null){
+            Node current = head;
+            do {
+                System.out.print(current.data+" ");
+                current = current.next;
+            } while (current != head);
+        }
     }
 }

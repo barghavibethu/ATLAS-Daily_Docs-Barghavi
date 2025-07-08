@@ -1,20 +1,15 @@
-import java.util.LinkedList;
+import java.util.Stack;
+
 public class Task008 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        Stack<String> stack = new Stack<>();
 
-        LinkedList<String> list = new LinkedList<>();
-        list.add("Apple");
-        list.add("Banana");
-        list.add("Grapes");
-        list.add("Orange");
-        list.add("Mango");
+        // Check if stack is empty before pushing
+        System.out.println("Is stack empty? " + stack.isEmpty());
 
-        String[] array = list.toArray(new String[0]);
-
-        //print array element
-        System.out.println("Array contents: ");
-        for (String item : array){
-            System.out.println(item);
-        }
+        // Push an element
+        stack.push("Hello");
+        // Check again after pushing
+        System.out.println("Is stack empty? " + stack.isEmpty());
     }
 }
