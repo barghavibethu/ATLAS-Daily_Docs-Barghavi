@@ -1,15 +1,27 @@
+import java.util.LinkedList;
+
 public class Task007 {
     public static void main(String[] args){
-        int[] array = {1, 2, 3, 4, 5, 6};
-        int n = array.length;
-        for (int i = 0; i < n/2; i++) {
-            int temp = array[i];
-            array[i] = array[n-1-i];
-            array[n-1-i] = temp;
+        LinkedList<String> list = new LinkedList<>();
+
+        //Add 5 elements
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+        list.add("Date");
+        list.add("Orange");
+
+        //Print original list
+        System.out.println("Original list: "+ list);
+
+        //Replace 3rd element(index 2)
+        for (int i = 0; i < 5; i++) {
+            System.out.println(list.get(i));
         }
-        System.out.println("Reversed array: ");
-        for (int num : array) {
-         System.out.println(num+"");
+        System.out.println();
+
+        for(String str: list){
+            System.out.print(str+ " ");
         }
     }
 }

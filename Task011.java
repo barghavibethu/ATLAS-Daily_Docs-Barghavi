@@ -1,19 +1,23 @@
-import java.util.*;
-import java.util.stream.Collectors;
-
+import java.util.LinkedList;
 public class Task011 {
-    public static void main(String[] args) {
-        //creating array list with 5 integers
-        List<Integer> numbers = Arrays.asList(2, 3, 4, 4, 2, 4);
+    public static void main(String[] args){
+        //Create a linkedlist
+        LinkedList<String> list = new LinkedList<>();
 
-        //using stream to calculate tge square of each number
-        List<Integer> removeDuplicate =  numbers.stream()
-                .distinct()
-                .collect(Collectors.toList());
+        //Use push to add elements
+        list.push("White");
+        list.push("Blue");
+        list.push("Red");
+        list.push("Black");
+        list.push("Green");
+        //printing list after pushing
+        System.out.println("After push: "+ list);
 
-        //printing the square numbers
-        System.out.println("Original numbers: " + numbers);
-        System.out.println("Duplicate numbers: " + removeDuplicate);
+        //use pop90 to remove the top element
+        String removed = list.pop();
+        System.out.println("Popped element: "+ removed);
+
+        //print the list after popping
+        System.out.println("After popping: " +list);
     }
 }
-

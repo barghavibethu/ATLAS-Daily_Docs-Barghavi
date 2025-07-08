@@ -1,16 +1,18 @@
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.LinkedList;
 
 public class Task009 {
     public static void main(String[] args) {
-        //creating array list with 5 integers
-        List<Integer> numbers = Arrays.asList(2, 3, 4, 5, 6);
-
-        //using stream to calculate tge square of each number
-        List<Integer> oddNumbers = numbers.stream().filter(num -> num %2 != 0).collect(Collectors.toList());
-
-        //printing the square numbers
-        System.out.println("Original numbers: " + numbers);
-        System.out.println("Squares of the numbers: " + oddNumbers);
+        LinkedList<String> list1 = new LinkedList<>();
+        //Add 5 elements
+        list1.add("Apple");
+        list1.add("Banana");
+        list1.add("Cherry");
+        list1.add("Date");
+        list1.add("Orange");
+        //Print original list
+        System.out.println("List1: " + list1);
+        //creating 2nd list
+        LinkedList<String> list2 = (LinkedList<String>)list1.clone();
+        System.out.println("Cloned list: "+ list2);
     }
 }

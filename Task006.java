@@ -1,34 +1,18 @@
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.LinkedList;
 public class Task006 {
-
-    // create an object of list using ArrayList
-    static List<String> places = new ArrayList<>();
-
-    // preparing our data
-    public static List getPlaces() {
-
-        // add places and country to the list
-        places.add("Nepal, Kathmandu");
-        places.add("Nepal, Pokhara");
-        places.add("India, Delhi");
-        places.add("USA, New York");
-        places.add("Africa, Nigeria");
-
-        return places;
-    }
-
-    public static void main(String[] args) {
-
-        List<String> myPlaces = getPlaces();
-        System.out.println("Places from Nepal:");
-
-        // Filter places from Nepal
-        myPlaces.stream()
-                .filter((p) -> p.startsWith("India"))
-                .map((p) -> p.toUpperCase())
-                .sorted()
-                .forEach((p) -> System.out.println(p));
+    public static void main(String[] args){
+        LinkedList<String> list = new LinkedList<>();
+        //Add 5 elements
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+        list.add("Date");
+        list.add("Orange");
+        //Print original list
+        System.out.println("Original list: "+ list);
+        //Replace 3rd element(index 2)
+        list.remove(3);
+        //Print updated list
+        System.out.println("After replacement: "+list);
     }
 }

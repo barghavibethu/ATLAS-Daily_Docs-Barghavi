@@ -1,20 +1,18 @@
-@FunctionalInterface
-interface MyInterface1 {
-    // abstract method
-    String reverse(String n);
-}
+import java.util.LinkedList;
 public class Task005 {
-    public static void main( String[] args ) {
-        // declare a reference to MyInterface
-        // assign a lambda expression to the reference
-        MyInterface1 ref = (str) -> {
-            String result = "";
-            for (int i = str.length()-1; i >= 0 ; i--)
-                result += str.charAt(i);
-            return result;
-        };
-        // call the method of the interface
-        System.out.println("Lambda reversed = " + ref.reverse("Lambda"));
+    public static void main(String[] args){
+        LinkedList<String> list = new LinkedList<>();
+        //Add 5 elements
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+        list.add("Date");
+        list.add("Orange");
+        //Print original list
+        System.out.println("Original list: "+ list);
+        //Replace 3rd element(index 2)
+        list.set(2,"Coconut");
+        //Print updated list
+        System.out.println("After replacement: "+list);
     }
 }
-
